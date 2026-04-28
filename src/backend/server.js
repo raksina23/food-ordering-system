@@ -23,3 +23,5 @@ app.listen(PORT, () => {
 });
 
 app.use("/api/menus", require("./routes/menus"));
+
+app.use("/api/cart", require("./routes/cart"));
