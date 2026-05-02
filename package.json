@@ -1,6 +1,11 @@
 {
-  "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "jsonwebtoken": "^9.0.3"
+  "name": "campuseats",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node src/backend/server.js",
+    "build": "cd src/backend && npm install"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
