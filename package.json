@@ -2,8 +2,7 @@
   "name": "campuseats",
   "version": "1.0.0",
   "scripts": {
-    "start": "node src/backend/server.js",
-    "build": "cd src/backend && npm install"
+    "start": "node src/backend/server.js"
   },
   "engines": {
     "node": "18.x"
