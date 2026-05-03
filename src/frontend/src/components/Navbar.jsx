@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const stored = localStorage.getItem("user");
     if (stored) setUser(JSON.parse(stored));
-  }, []);
+    else setUser(null);
+  }, [location]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -28,6 +30,7 @@ export default function Navbar() {
           <>
             <Link to="/cart" style={{ color: "#fff", textDecoration: "none" }}>Cart</Link>
             <Link to="/orders" style={{ color: "#fff", textDecoration: "none" }}>Orders</Link>
+            <Link to="/profile" style={{ color: "#fff", textDecoration: "none" }}>Profile</Link>
             <span style={{ color: "#4ecca3" }}>Hi, {user.name}</span>
             <button onClick={handleLogout} style={{ background: "#e74c3c", color: "#fff", border: "none", borderRadius: "6px", padding: "0.4rem 1rem", cursor: "pointer" }}>
               Logout
