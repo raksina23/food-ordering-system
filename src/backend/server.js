@@ -13,6 +13,7 @@ app.use("/api/auth",   require("./routes/auth"));
 app.use("/api/menus",  require("./routes/menus"));
 app.use("/api/orders", require("./routes/orders"));
 app.use("/api/cart",   require("./routes/cart"));
+app.use("/api/reviews", require("./routes/reviews"));
 app.use("/api/users",  require("./routes/users"));
 
 app.get("/api/health", (req, res) => {
