@@ -1,0 +1,14 @@
+{
+  "name": "campuseats",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node src/backend/server.js",
+    "install:backend": "npm install --prefix src/backend"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
