@@ -50,3 +50,17 @@ CREATE TABLE IF NOT EXISTS reviews (
   comment      TEXT,
   created_at   TIMESTAMP DEFAULT NOW()
 );
+
+-- Seed menu items
+INSERT INTO menu_items (name, description, price, category, is_available)
+SELECT * FROM (VALUES
+  ('Pad Thai', 'Classic Thai stir-fried noodles', 60, 'Main', true),
+  ('Som Tum', 'Spicy green papaya salad', 45, 'Salad', true),
+  ('Khao Pad', 'Thai fried rice with egg', 50, 'Main', true),
+  ('Tom Yum Soup', 'Spicy and sour Thai soup', 55, 'Soup', true),
+  ('Mango Sticky Rice', 'Sweet sticky rice with mango', 40, 'Dessert', true),
+  ('Green Curry', 'Thai green curry with coconut milk', 65, 'Main', true),
+  ('Spring Rolls', 'Crispy fried spring rolls x4', 35, 'Snack', true),
+  ('Thai Milk Tea', 'Sweet creamy Thai tea', 30, 'Drink', true)
+) AS v(name, description, price, category, is_available)
+WHERE NOT EXISTS (SELECT 1 FROM menu_items LIMIT 1);
