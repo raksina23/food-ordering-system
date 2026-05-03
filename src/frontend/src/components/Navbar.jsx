@@ -31,6 +31,9 @@ export default function Navbar() {
             <Link to="/cart" style={{ color: "#fff", textDecoration: "none" }}>Cart</Link>
             <Link to="/orders" style={{ color: "#fff", textDecoration: "none" }}>Orders</Link>
             <Link to="/profile" style={{ color: "#fff", textDecoration: "none" }}>Profile</Link>
+            {user.role === "admin" && (
+              <Link to="/admin" style={{ color: "#4ecca3", textDecoration: "none" }}>Admin</Link>
+            )}
             <span style={{ color: "#4ecca3" }}>Hi, {user.name}</span>
             <button onClick={handleLogout} style={{ background: "#e74c3c", color: "#fff", border: "none", borderRadius: "6px", padding: "0.4rem 1rem", cursor: "pointer" }}>
               Logout
