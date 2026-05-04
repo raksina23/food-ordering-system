@@ -1,7 +1,5 @@
 "scripts": {
     "start": "node src/backend/server.js",
     "install:backend": "npm install --prefix src/backend",
-    "install:frontend": "npm install --prefix src/frontend",
-    "build": "npm run install:frontend && npm run build --prefix src/frontend && xcopy /E /I /Y src\\frontend\\dist src\\backend\\public",
-    "railway:build": "npm run install:frontend && npm run build --prefix src/frontend && cp -r src/frontend/dist src/backend/public"
+    "build": "npm install --prefix src/frontend && npm run build --prefix src/frontend && cp -r src/frontend/dist src/backend/public"
   }
