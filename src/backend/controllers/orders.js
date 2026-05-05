@@ -81,4 +81,25 @@ const updateStatus = async (req, res) => {
   }
 };
 
-module.exports = { placeOrder, getMyOrders, getOne, updateStatus };
+const cancelOrder = async (req, res) => {
+  try {
+    const order = await pool.query(
+      "SELECT * FROM orders WHERE id = $1 AND user_id = $2",
+      [req.params.id, req.user.id]
+    );
+    if (order.rows.length === 0)
+      return res.status(404).json({ message: "Order not found" });
+    if (order.rows[0].status !== "pending")
+      return res.status(400).json({ message: "Only pending orders can be cancelled" });
+
+    const result = await pool.query(
+      "UPDATE orders SET status = 'cancelled' WHERE id = $1 RETURNING *",
+      [req.params.id]
+    );
+    res.json({ message: "Order cancelled", order: result.rows[0] });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+module.exports = { placeOrder, getMyOrders, getOne, updateStatus, cancelOrder };

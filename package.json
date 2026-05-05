@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node src/backend/server.js",
-    "build": "cd src/backend && npm install"
+    "install:backend": "npm install --prefix src/backend",
+    "build": "npm install --prefix src/frontend && npm run build --prefix src/frontend && cp -r src/frontend/dist src/backend/public"
   },
   "engines": {
     "node": "18.x"
